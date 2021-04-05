@@ -39,7 +39,7 @@ export class ItemService {
     await this.productRepository.updateProduct(
       {
         quantity: foundProduct.quantity + 1,
-        items: [foundProduct.items, createdItem._id]
+        items: [foundProduct.items[0] === undefined ? null : foundProduct.items, createdItem._id]
       }, 
       foundProduct._id
     );
