@@ -35,13 +35,11 @@ export class ItemService {
     );
 
     await this.productRepository.updateProduct(
-      {
-        quantity: foundProduct.quantity - 1,
-      }, 
+      { quantity: foundProduct.quantity - 1 }, 
       foundProduct._id
     );
 
-    return this.itemRepository.deleteItem(id)
+    return this.itemRepository.deleteItem(id);
   }
 
   async createItem(newItem: ItemViewModel) {
@@ -55,7 +53,7 @@ export class ItemService {
     
     let itens = []; 
 
-    foundProduct.items.toString().split(',').map(item => itens.push(item))
+    foundProduct.items == "" ? itens.push(createdItem._id) : foundProduct.items.toString().split(',').map(item => itens.push(item))
 
     itens.push(createdItem._id)
 
@@ -69,7 +67,7 @@ export class ItemService {
 
     const qrcode = await QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`);
 
-    return {createdItem, qrcode};
+    return { createdItem, qrcode };
   }
 
 }

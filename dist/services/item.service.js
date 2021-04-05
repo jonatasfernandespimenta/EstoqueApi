@@ -33,9 +33,7 @@ let ItemService = class ItemService {
         const foundItem = await this.itemRepository.getById(id);
         const productList = await this.productRepository.getProducts();
         const foundProduct = productList.find(product => product.sku === foundItem.sku);
-        await this.productRepository.updateProduct({
-            quantity: foundProduct.quantity - 1,
-        }, foundProduct._id);
+        await this.productRepository.updateProduct({ quantity: foundProduct.quantity - 1 }, foundProduct._id);
         return this.itemRepository.deleteItem(id);
     }
     async createItem(newItem) {
@@ -43,7 +41,7 @@ let ItemService = class ItemService {
         const foundProduct = productList.find(product => product.sku === newItem.sku);
         const createdItem = await this.itemRepository.createItem(newItem);
         let itens = [];
-        foundProduct.items.toString().split(',').map(item => itens.push(item));
+        foundProduct.items == "" ? itens.push(createdItem._id) : foundProduct.items.toString().split(',').map(item => itens.push(item));
         itens.push(createdItem._id);
         await this.productRepository.updateProduct({
             quantity: foundProduct.quantity + 1,
