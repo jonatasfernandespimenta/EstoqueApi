@@ -2162,8 +2162,8 @@
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/item.schema.ts": {
-        "version": "5779d1857c553af7035ae194f9ae0b00591aab8aeaff743a15d0d13b17ad9a53",
-        "signature": "4a916f2337812627055cf9cc0ce753d094ae5d1a81142e01bc41dd86cfd79952",
+        "version": "7a9953ea35b2f5374e4572fc21341e2c4f5a5b8661cf5c1d59e6b31e8a2d1aac",
+        "signature": "0539776ee376f3c06df27166e225dca3d2ee1017f39a5e51020d9c878b4d8e9d",
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/product.schema.ts": {
@@ -2187,8 +2187,8 @@
         "affectsGlobalScope": false
       },
       "../src/domains/item.viewmodel.ts": {
-        "version": "46da3b6cf06a00753cc74f26b3a747888167163eb3696d18f75add6319ac072f",
-        "signature": "c492a78da4856156a34d5c174cdfc400d4ce4e17e6a56367d5ca976423e21e52",
+        "version": "0bf77076123a2be6f7b3246bb8de8702cee5df7658656397ce4f510cefa79dcd",
+        "signature": "6bc28bf05db524e33c2bea92329567b8f3d0145ce9c6fae8a99a8338ecca840d",
         "affectsGlobalScope": false
       },
       "../src/repositories/item.repository.ts": {
@@ -2197,8 +2197,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "870b7eb248f16d13f1d12f01b5d4deda93b89624361d546c0e2b28c97bf368ef",
-        "signature": "80f3d4860700a32c3b0547c670a488b5580fe4cb86424dac609b78e09f7db8f0",
+        "version": "f43fb25d92748eee5905fe3fd2df07167e117d07e750a738ebbf78343fe6f5c8",
+        "signature": "9db7a3fb31c732f819989c2dc76b08f0a259204a1b0c9bbeaa60665b42596d2f",
         "affectsGlobalScope": false
       },
       "../src/controllers/item.controller.ts": {
@@ -4501,7 +4501,9 @@
       "../src/services/item.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/domains/item.viewmodel.ts",
-        "../src/repositories/item.repository.ts"
+        "../src/repositories/item.repository.ts",
+        "../src/repositories/product.respository.ts",
+        "../src/services/product.service.ts"
       ],
       "../src/services/product.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -6361,7 +6363,8 @@
       "../src/services/item.service.ts": [
         "../src/domains/item.viewmodel.ts",
         "../src/domains/schemas/item.schema.ts",
-        "../src/repositories/item.repository.ts"
+        "../src/repositories/item.repository.ts",
+        "../src/repositories/product.respository.ts"
       ],
       "../src/services/product.service.ts": [
         "../src/domains/product.viewmodel.ts",

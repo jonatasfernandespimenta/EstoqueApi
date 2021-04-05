@@ -13,9 +13,11 @@ exports.ItemService = void 0;
 const common_1 = require("@nestjs/common");
 const item_viewmodel_1 = require("../domains/item.viewmodel");
 const item_repository_1 = require("../repositories/item.repository");
+const product_respository_1 = require("../repositories/product.respository");
 let ItemService = class ItemService {
-    constructor(itemRepository) {
+    constructor(itemRepository, productRepository) {
         this.itemRepository = itemRepository;
+        this.productRepository = productRepository;
     }
     async getItems() {
         return this.itemRepository.getItems();
@@ -30,12 +32,20 @@ let ItemService = class ItemService {
         return this.itemRepository.deleteItem(id);
     }
     async createItem(newItem) {
-        return this.itemRepository.createItem(newItem);
+        const productList = await this.productRepository.getProducts();
+        const foundProduct = productList.find(product => product.sku === newItem.sku);
+        const createdItem = await this.itemRepository.createItem(newItem);
+        await this.productRepository.updateProduct({
+            quantity: foundProduct.quantity + 1,
+            items: [foundProduct.items, createdItem._id]
+        }, foundProduct._id);
+        return createdItem;
     }
 };
 ItemService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [item_repository_1.ItemRepository])
+    __metadata("design:paramtypes", [item_repository_1.ItemRepository,
+        product_respository_1.ProductRepository])
 ], ItemService);
 exports.ItemService = ItemService;
 //# sourceMappingURL=item.service.js.map

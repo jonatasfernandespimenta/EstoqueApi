@@ -12,14 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ItemViewModel = void 0;
 const class_validator_1 = require("class-validator");
 class ItemViewModel {
-    constructor(price, createdAt) {
+    constructor(price, createdAt, sku) {
         this.price = price;
         this.createdAt = createdAt;
+        this.sku = sku;
     }
 }
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], ItemViewModel.prototype, "price", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], ItemViewModel.prototype, "sku", void 0);
 exports.ItemViewModel = ItemViewModel;
 //# sourceMappingURL=item.viewmodel.js.map
