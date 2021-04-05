@@ -9,5 +9,8 @@ export declare class ItemService {
     getItem(id: any): Promise<import("../domains/schemas/item.schema").Item>;
     updateItem(newProps: any, id: any): Promise<import("../domains/schemas/item.schema").Item>;
     removeItem(id: any): Promise<import("../domains/schemas/item.schema").Item>;
-    createItem(newItem: ItemViewModel): Promise<import("../domains/schemas/item.schema").Item>;
+    createItem(newItem: ItemViewModel): Promise<{
+        createdItem: import("../domains/schemas/item.schema").Item;
+        qrcode: any;
+    }>;
 }

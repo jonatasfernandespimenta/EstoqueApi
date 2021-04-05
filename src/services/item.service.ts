@@ -26,6 +26,21 @@ export class ItemService {
   }
 
   async removeItem(id) {
+    const foundItem = await this.itemRepository.getById(id);
+
+    const productList = await this.productRepository.getProducts();
+    
+    const foundProduct = productList.find(
+      product => product.sku === foundItem.sku
+    );
+
+    await this.productRepository.updateProduct(
+      {
+        quantity: foundProduct.quantity - 1,
+      }, 
+      foundProduct._id
+    );
+
     return this.itemRepository.deleteItem(id)
   }
 
@@ -34,7 +49,7 @@ export class ItemService {
     
     const foundProduct = productList.find(
       product => product.sku === newItem.sku
-      );
+    );
 
     const createdItem = await this.itemRepository.createItem(newItem);
     
@@ -52,11 +67,9 @@ export class ItemService {
       foundProduct._id
     );
 
-    QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`, function (err, url) {
-      // console.log(url);
-    });
+    const qrcode = await QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`);
 
-    return createdItem;
+    return {createdItem, qrcode};
   }
 
 }

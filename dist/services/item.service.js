@@ -30,6 +30,12 @@ let ItemService = class ItemService {
         return this.itemRepository.updateItem(newProps, id);
     }
     async removeItem(id) {
+        const foundItem = await this.itemRepository.getById(id);
+        const productList = await this.productRepository.getProducts();
+        const foundProduct = productList.find(product => product.sku === foundItem.sku);
+        await this.productRepository.updateProduct({
+            quantity: foundProduct.quantity - 1,
+        }, foundProduct._id);
         return this.itemRepository.deleteItem(id);
     }
     async createItem(newItem) {
@@ -43,9 +49,8 @@ let ItemService = class ItemService {
             quantity: foundProduct.quantity + 1,
             items: itens
         }, foundProduct._id);
-        QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`, function (err, url) {
-        });
-        return createdItem;
+        const qrcode = await QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`);
+        return { createdItem, qrcode };
     }
 };
 ItemService = __decorate([

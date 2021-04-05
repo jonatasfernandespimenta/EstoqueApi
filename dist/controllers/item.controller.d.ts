@@ -5,6 +5,9 @@ export declare class ItemController {
     constructor(itemService: ItemService);
     getItems(): Promise<import("../domains/schemas/item.schema").Item[]>;
     getItem(params: any): Promise<import("../domains/schemas/item.schema").Item>;
-    createItem(Item: ItemViewModel): Promise<import("../domains/schemas/item.schema").Item>;
+    createItem(Item: ItemViewModel): Promise<{
+        createdItem: import("../domains/schemas/item.schema").Item;
+        qrcode: any;
+    }>;
     updateItem(params: any): Promise<import("../domains/schemas/item.schema").Item>;
 }
