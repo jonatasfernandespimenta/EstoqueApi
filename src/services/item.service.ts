@@ -37,11 +37,17 @@ export class ItemService {
       );
 
     const createdItem = await this.itemRepository.createItem(newItem);
+    
+    let itens = []; 
+
+    foundProduct.items.toString().split(',').map(item => itens.push(item))
+
+    itens.push(createdItem._id)
 
     await this.productRepository.updateProduct(
       {
         quantity: foundProduct.quantity + 1,
-        items: [foundProduct.items, createdItem._id]
+        items: itens
       }, 
       foundProduct._id
     );

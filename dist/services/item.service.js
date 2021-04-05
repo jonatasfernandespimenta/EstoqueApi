@@ -36,9 +36,12 @@ let ItemService = class ItemService {
         const productList = await this.productRepository.getProducts();
         const foundProduct = productList.find(product => product.sku === newItem.sku);
         const createdItem = await this.itemRepository.createItem(newItem);
+        let itens = [];
+        foundProduct.items.toString().split(',').map(item => itens.push(item));
+        itens.push(createdItem._id);
         await this.productRepository.updateProduct({
             quantity: foundProduct.quantity + 1,
-            items: [foundProduct.items, createdItem._id]
+            items: itens
         }, foundProduct._id);
         QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`, function (err, url) {
         });
