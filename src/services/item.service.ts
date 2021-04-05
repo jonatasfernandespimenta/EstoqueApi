@@ -53,9 +53,12 @@ export class ItemService {
     
     let itens = []; 
 
-    foundProduct.items == "" ? itens.push(createdItem._id) : foundProduct.items.toString().split(',').map(item => itens.push(item))
-
-    itens.push(createdItem._id)
+    if(foundProduct.items == "") {
+      itens.push(createdItem._id)
+    } else {
+      foundProduct.items.toString().split(',').map(item => itens.push(item))
+      itens.push(createdItem._id)
+    }
 
     await this.productRepository.updateProduct(
       {

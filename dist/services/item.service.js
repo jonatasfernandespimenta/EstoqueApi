@@ -41,8 +41,13 @@ let ItemService = class ItemService {
         const foundProduct = productList.find(product => product.sku === newItem.sku);
         const createdItem = await this.itemRepository.createItem(newItem);
         let itens = [];
-        foundProduct.items == "" ? itens.push(createdItem._id) : foundProduct.items.toString().split(',').map(item => itens.push(item));
-        itens.push(createdItem._id);
+        if (foundProduct.items == "") {
+            itens.push(createdItem._id);
+        }
+        else {
+            foundProduct.items.toString().split(',').map(item => itens.push(item));
+            itens.push(createdItem._id);
+        }
         await this.productRepository.updateProduct({
             quantity: foundProduct.quantity + 1,
             items: itens
