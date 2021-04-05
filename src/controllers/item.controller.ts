@@ -21,7 +21,7 @@ export class ItemController {
     return this.itemService.createItem(Item);
   }
 
-  @Delete('/:id')
+  @Get('delete/:id')
   async updateItem(@Param() params) {
     return this.itemService.removeItem(params.id);
   }

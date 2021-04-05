@@ -2197,12 +2197,12 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "4e8582901236ed85f6681a8bcbd937ae3507255c39dfcced17cb7cbf14d6c915",
+        "version": "1c09e0d7067c615bfcc428bd15f32895b522204a9d40dca4c3b86c9e54abf67f",
         "signature": "9db7a3fb31c732f819989c2dc76b08f0a259204a1b0c9bbeaa60665b42596d2f",
         "affectsGlobalScope": false
       },
       "../src/controllers/item.controller.ts": {
-        "version": "88d4d7517f4a62eb1eecaed9647888bab0bc89378b77c92b4b4f4e536bcca876",
+        "version": "03f02a4a7a9b9b89a7ce390b858c24abe68af8a4e5277b731fa8b7192535f177",
         "signature": "3e3ab032644936452c685024a3319461cd5944c5ac31055b28d3f13457d27375",
         "affectsGlobalScope": false
       },

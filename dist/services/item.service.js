@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const item_viewmodel_1 = require("../domains/item.viewmodel");
 const item_repository_1 = require("../repositories/item.repository");
 const product_respository_1 = require("../repositories/product.respository");
+const QRCode = require("qrcode");
 let ItemService = class ItemService {
     constructor(itemRepository, productRepository) {
         this.itemRepository = itemRepository;
@@ -37,8 +38,10 @@ let ItemService = class ItemService {
         const createdItem = await this.itemRepository.createItem(newItem);
         await this.productRepository.updateProduct({
             quantity: foundProduct.quantity + 1,
-            items: [foundProduct.items[0] === undefined ? null : foundProduct.items, createdItem._id]
+            items: [foundProduct.items, createdItem._id]
         }, foundProduct._id);
+        QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`, function (err, url) {
+        });
         return createdItem;
     }
 };

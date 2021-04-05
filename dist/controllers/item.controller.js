@@ -54,7 +54,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "createItem", null);
 __decorate([
-    common_1.Delete('/:id'),
+    common_1.Get('delete/:id'),
     __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
