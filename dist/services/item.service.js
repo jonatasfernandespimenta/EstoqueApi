@@ -46,6 +46,7 @@ let ItemService = class ItemService {
     }
     async createItem(newItem) {
         let created = false;
+        fs.truncate('teste.txt', 0, function () { console.log(''); });
         await this.logRepository.createLog({ inputDate: new Date(), withdrawDate: null, quantity: newItem.quantity });
         for (let i = 0; i <= newItem.quantity; i++) {
             const productList = await this.productRepository.getProducts();
