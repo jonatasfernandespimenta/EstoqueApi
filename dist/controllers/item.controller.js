@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ItemController = void 0;
 const common_1 = require("@nestjs/common");
+const path_1 = require("path");
 const item_viewmodel_1 = require("../domains/item.viewmodel");
 const item_service_1 = require("../services/item.service");
 let ItemController = class ItemController {
@@ -26,8 +27,9 @@ let ItemController = class ItemController {
     async getItem(params) {
         return this.itemService.getItem(params.id);
     }
-    async createItem(Item) {
-        return this.itemService.createItem(Item);
+    async createItem(Item, res) {
+        await this.itemService.createItem(Item);
+        return res.sendFile(path_1.join(__dirname, '..', '..', 'teste.txt'));
     }
     async updateItem(params, body) {
         return this.itemService.removeItem(params.id, body);
@@ -48,13 +50,13 @@ __decorate([
 ], ItemController.prototype, "getItem", null);
 __decorate([
     common_1.Post('/'),
-    __param(0, common_1.Body()),
+    __param(0, common_1.Body()), __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [item_viewmodel_1.ItemViewModel]),
+    __metadata("design:paramtypes", [item_viewmodel_1.ItemViewModel, Object]),
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "createItem", null);
 __decorate([
-    common_1.Get('delete/:id'),
+    common_1.Post('delete/:id'),
     __param(0, common_1.Param()), __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),

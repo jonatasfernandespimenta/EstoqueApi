@@ -1,4 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post, Res } from '@nestjs/common';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 import { ItemViewModel } from 'src/domains/item.viewmodel';
 import { ItemService } from 'src/services/item.service';
 
@@ -17,11 +19,12 @@ export class ItemController {
   }
 
   @Post('/')
-  async createItem(@Body() Item: ItemViewModel) {
-    return this.itemService.createItem(Item);
+  async createItem(@Body() Item: ItemViewModel, @Res() res) {
+    await this.itemService.createItem(Item);
+    return res.sendFile(join(__dirname, '..', '..', 'teste.txt'));
   }
 
-  @Get('delete/:id')
+  @Post('delete/:id')
   async updateItem(@Param() params, @Body() body) {
     return this.itemService.removeItem(params.id, body);
   }

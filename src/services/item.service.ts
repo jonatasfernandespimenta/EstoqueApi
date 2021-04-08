@@ -32,73 +32,79 @@ export class ItemService {
   }
 
   async removeItem(id, body) {
-    await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: body.quantity })
+    const res = await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: body.quantity }).then(async() => {
+      const foundItem = await this.itemRepository.getById(id);
+  
+      const productList = await this.productRepository.getProducts();
+      
+      const foundProduct = productList.find(
+        product => product.sku === foundItem.sku
+      );
+  
+      await this.productRepository.updateProduct(
+        { quantity: foundProduct.quantity - 1 }, 
+        foundProduct._id
+      );
 
-    const foundItem = await this.itemRepository.getById(id);
+      return this.itemRepository.deleteItem(id);
+    })
+    return res;
 
-    const productList = await this.productRepository.getProducts();
-    
-    const foundProduct = productList.find(
-      product => product.sku === foundItem.sku
-    );
-
-    await this.productRepository.updateProduct(
-      { quantity: foundProduct.quantity - 1 }, 
-      foundProduct._id
-    );
-
-    return this.itemRepository.deleteItem(id);
   }
 
   async createItem(newItem: ItemViewModel) {
-    await this.logRepository.createLog({ inputDate: new Date(), withdrawDate: null, quantity: 1 })
+    await this.logRepository.createLog({ inputDate: new Date(), withdrawDate: null, quantity: newItem.quantity })
+    for (let i = 0; i < newItem.quantity; i++) {
+      const productList = await this.productRepository.getProducts();
+      
+      const foundProduct = productList.find(
+        product => product.sku === newItem.sku
+      );
+  
+      const createdItem = await this.itemRepository.createItem(newItem);
+      
+      let itens = []; 
+  
+      if(foundProduct.items == "") {
+        itens.push(createdItem._id)
+      } else {
+        foundProduct.items.toString().split(',').map(item => itens.push(item))
+        itens.push(createdItem._id)
+      }
+  
+      await this.productRepository.updateProduct(
+        {
+          quantity: foundProduct.quantity + 1,
+          items: itens
+        }, 
+        foundProduct._id
+      );
 
-    const productList = await this.productRepository.getProducts();
+  
+      let zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`
+  
+      const data = fs.readFileSync('teste.txt', 'utf8');
+  
+      for (let index = 1; index <= newItem.quantity; index++) {
+        if(data.includes('^XA')) {
+          countLinesInFile('teste.txt', (error: Error, numberOfLines: number) => {
+            zpl = `^FO20,0^BY4,2.0,${index * 500}^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`
     
-    const foundProduct = productList.find(
-      product => product.sku === newItem.sku
-    );
+            insertLine('teste.txt').content(zpl).at(numberOfLines-1).then(function(err) {
+              console.log('')
+            })
+          });
+        } else {
+          fs.appendFile('teste.txt', '^XA\n' + zpl + '\n\n^XZ', function (err) {
+            if (err) throw err;
+            console.log('');
+          });
+        }
+      }
 
-    const createdItem = await this.itemRepository.createItem(newItem);
-    
-    let itens = []; 
-
-    if(foundProduct.items == "") {
-      itens.push(createdItem._id)
-    } else {
-      foundProduct.items.toString().split(',').map(item => itens.push(item))
-      itens.push(createdItem._id)
     }
-
-    await this.productRepository.updateProduct(
-      {
-        quantity: foundProduct.quantity + 1,
-        items: itens
-      }, 
-      foundProduct._id
-    );
-
-    const qrcode = await QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`);
-
-    const zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`
-
-    const data = fs.readFileSync('teste.txt', 'utf8');
-
-    if(data.includes('^XA')) {
-      countLinesInFile('teste.txt', (error: Error, numberOfLines: number) => {
-        insertLine('teste.txt').content(zpl).at(numberOfLines-1).then(function(err) {
-          console.log('saas')
-        })
-      });
-    } else {
-      fs.appendFile('teste.txt', '^XA\n' + zpl + '\n\n^XZ', function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-      });
-    }
     
-
-    return { createdItem, qrcode };
+    return {'created': true};
   }
 
 }

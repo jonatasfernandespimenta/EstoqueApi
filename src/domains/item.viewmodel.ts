@@ -9,7 +9,7 @@ export class ItemViewModel {
   @IsNotEmpty()
   readonly sku: String;
 
-  readonly quantity: Number;
+  readonly quantity: number;
 
   readonly createdAt: Date;
 
