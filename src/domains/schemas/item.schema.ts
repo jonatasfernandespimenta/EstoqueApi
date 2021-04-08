@@ -5,12 +5,10 @@ import { Document } from 'mongoose';
 export interface Item extends Document {
   readonly _id: mongoose.Schema.Types.ObjectId;
   readonly createdAt: Date;
-  readonly price: number;
   readonly sku: String;
 }
 
 export const ItemSchema = new mongoose.Schema({
-  price: Number,
   sku: String,
   createdAt: { type: Date, default: Date.now }
 });

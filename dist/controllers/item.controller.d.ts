@@ -9,5 +9,5 @@ export declare class ItemController {
         createdItem: import("../domains/schemas/item.schema").Item;
         qrcode: any;
     }>;
-    updateItem(params: any): Promise<import("../domains/schemas/item.schema").Item>;
+    updateItem(params: any, body: any): Promise<import("../domains/schemas/item.schema").Item>;
 }

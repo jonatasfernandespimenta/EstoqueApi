@@ -1,3 +1,5 @@
+import { LogController } from './controllers/log.controller';
+import { LogService } from './services/log.service';
 import { ProductController } from './controllers/product.controller';
 import { ProductService } from './services/product.service';
 import { Module } from '@nestjs/common';
@@ -10,6 +12,8 @@ import { ProductRepository } from './repositories/product.respository';
 import { ItemController } from './controllers/item.controller';
 import { ItemService } from './services/item.service';
 import { ItemRepository } from './repositories/item.repository';
+import { LogSchema } from './domains/schemas/log.schema';
+import { LogRepository } from './repositories/log.repository';
 
 @Module({
   imports: [
@@ -19,19 +23,23 @@ import { ItemRepository } from './repositories/item.repository';
     MongooseModule.forFeature([
       { name: 'Product', schema: ProductSchema },
       { name: 'Item', schema: ItemSchema },
+      { name: 'Log', schema: LogSchema },
     ]),
   ],
   controllers: [
-    ProductController, 
+    LogController,
+    ProductController,
     AppController,
     ItemController
   ],
   providers: [
-    ProductService, 
+    LogService,
+    ProductService,
     AppService,
     ProductRepository,
     ItemService,
-    ItemRepository
+    ItemRepository,
+    LogRepository
   ],
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
 export declare class ItemViewModel {
-    constructor(price: number, createdAt: Date, sku: String);
-    readonly price: number;
+    constructor(createdAt: Date, sku: String);
     readonly sku: String;
     readonly createdAt: Date;
 }

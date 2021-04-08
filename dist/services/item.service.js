@@ -13,12 +13,16 @@ exports.ItemService = void 0;
 const common_1 = require("@nestjs/common");
 const item_viewmodel_1 = require("../domains/item.viewmodel");
 const item_repository_1 = require("../repositories/item.repository");
+const log_repository_1 = require("../repositories/log.repository");
 const product_respository_1 = require("../repositories/product.respository");
+const fs = require('fs');
+const atob = require('atob');
 const QRCode = require("qrcode");
 let ItemService = class ItemService {
-    constructor(itemRepository, productRepository) {
+    constructor(itemRepository, productRepository, logRepository) {
         this.itemRepository = itemRepository;
         this.productRepository = productRepository;
+        this.logRepository = logRepository;
     }
     async getItems() {
         return this.itemRepository.getItems();
@@ -29,7 +33,8 @@ let ItemService = class ItemService {
     async updateItem(newProps, id) {
         return this.itemRepository.updateItem(newProps, id);
     }
-    async removeItem(id) {
+    async removeItem(id, body) {
+        await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: body.quantity });
         const foundItem = await this.itemRepository.getById(id);
         const productList = await this.productRepository.getProducts();
         const foundProduct = productList.find(product => product.sku === foundItem.sku);
@@ -37,6 +42,7 @@ let ItemService = class ItemService {
         return this.itemRepository.deleteItem(id);
     }
     async createItem(newItem) {
+        await this.logRepository.createLog({ inputDate: new Date(), withdrawDate: null, quantity: 1 });
         const productList = await this.productRepository.getProducts();
         const foundProduct = productList.find(product => product.sku === newItem.sku);
         const createdItem = await this.itemRepository.createItem(newItem);
@@ -59,7 +65,8 @@ let ItemService = class ItemService {
 ItemService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [item_repository_1.ItemRepository,
-        product_respository_1.ProductRepository])
+        product_respository_1.ProductRepository,
+        log_repository_1.LogRepository])
 ], ItemService);
 exports.ItemService = ItemService;
 //# sourceMappingURL=item.service.js.map

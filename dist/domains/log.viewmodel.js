@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ItemViewModel = void 0;
+exports.LogViewModel = void 0;
 const class_validator_1 = require("class-validator");
-class ItemViewModel {
-    constructor(createdAt, sku) {
-        this.createdAt = createdAt;
-        this.sku = sku;
+class LogViewModel {
+    constructor(inputDate, withdrawDate, quantity) {
+        this.inputDate = inputDate;
+        this.withdrawDate = withdrawDate;
+        this.quantity = quantity;
     }
 }
 __decorate([
     class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], ItemViewModel.prototype, "sku", void 0);
-exports.ItemViewModel = ItemViewModel;
-//# sourceMappingURL=item.viewmodel.js.map
+    __metadata("design:type", Number)
+], LogViewModel.prototype, "quantity", void 0);
+exports.LogViewModel = LogViewModel;
+//# sourceMappingURL=log.viewmodel.js.map

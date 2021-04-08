@@ -1,0 +1,1 @@
+{"version":3,"file":"log.schema.js","sourceRoot":"","sources":["../../../src/domains/schemas/log.schema.ts"],"names":[],"mappings":";;;AAAA,qCAAqC;AAWxB,QAAA,SAAS,GAAG,IAAI,QAAQ,CAAC,MAAM,CAAC;IAC3C,SAAS,EAAE,IAAI;IACf,YAAY,EAAE,IAAI;IAClB,QAAQ,EAAE,MAAM;CACjB,CAAC,CAAA"}
