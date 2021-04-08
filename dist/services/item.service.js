@@ -16,7 +16,8 @@ const item_repository_1 = require("../repositories/item.repository");
 const log_repository_1 = require("../repositories/log.repository");
 const product_respository_1 = require("../repositories/product.respository");
 const fs = require('fs');
-const atob = require('atob');
+const insertLine = require('insert-line');
+const countLinesInFile = require('count-lines-in-file');
 const QRCode = require("qrcode");
 let ItemService = class ItemService {
     constructor(itemRepository, productRepository, logRepository) {
@@ -59,6 +60,22 @@ let ItemService = class ItemService {
             items: itens
         }, foundProduct._id);
         const qrcode = await QRCode.toDataURL(`http://192.168.15.161:3000/item/delete/${createdItem._id}`);
+        const zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`;
+        const data = fs.readFileSync('teste.txt', 'utf8');
+        if (data.includes('^XA')) {
+            countLinesInFile('teste.txt', (error, numberOfLines) => {
+                insertLine('teste.txt').content(zpl).at(numberOfLines - 1).then(function (err) {
+                    console.log('saas');
+                });
+            });
+        }
+        else {
+            fs.appendFile('teste.txt', '^XA\n' + zpl + '\n\n^XZ', function (err) {
+                if (err)
+                    throw err;
+                console.log('Saved!');
+            });
+        }
         return { createdItem, qrcode };
     }
 };
