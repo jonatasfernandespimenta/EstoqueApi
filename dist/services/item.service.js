@@ -45,8 +45,9 @@ let ItemService = class ItemService {
         return res;
     }
     async createItem(newItem) {
+        let created = false;
         await this.logRepository.createLog({ inputDate: new Date(), withdrawDate: null, quantity: newItem.quantity });
-        for (let i = 0; i < newItem.quantity; i++) {
+        for (let i = 0; i <= newItem.quantity; i++) {
             const productList = await this.productRepository.getProducts();
             const foundProduct = productList.find(product => product.sku === newItem.sku);
             const createdItem = await this.itemRepository.createItem(newItem);
@@ -62,27 +63,14 @@ let ItemService = class ItemService {
                 quantity: foundProduct.quantity + 1,
                 items: itens
             }, foundProduct._id);
-            let zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`;
-            const data = fs.readFileSync('teste.txt', 'utf8');
-            for (let index = 1; index <= newItem.quantity; index++) {
-                if (data.includes('^XA')) {
-                    countLinesInFile('teste.txt', (error, numberOfLines) => {
-                        zpl = `^FO20,0^BY4,2.0,${index * 500}^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`;
-                        insertLine('teste.txt').content(zpl).at(numberOfLines - 1).then(function (err) {
-                            console.log('');
-                        });
-                    });
-                }
-                else {
-                    fs.appendFile('teste.txt', '^XA\n' + zpl + '\n\n^XZ', function (err) {
-                        if (err)
-                            throw err;
-                        console.log('');
-                    });
-                }
-            }
+            const zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`;
+            fs.appendFile('teste.txt', '\n^XA\n' + zpl + '\n^XZ', function (err) {
+                if (err)
+                    throw err;
+                created = true;
+            });
         }
-        return { 'created': true };
+        return { 'created': created };
     }
 };
 ItemService = __decorate([

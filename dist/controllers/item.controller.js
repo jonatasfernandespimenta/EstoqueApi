@@ -28,8 +28,10 @@ let ItemController = class ItemController {
         return this.itemService.getItem(params.id);
     }
     async createItem(Item, res) {
-        await this.itemService.createItem(Item);
-        return res.sendFile(path_1.join(__dirname, '..', '..', 'teste.txt'));
+        const response = await this.itemService.createItem(Item);
+        if (response.created) {
+            return res.sendFile(path_1.join(__dirname, '..', '..', 'teste.txt'));
+        }
     }
     async updateItem(params, body) {
         return this.itemService.removeItem(params.id, body);

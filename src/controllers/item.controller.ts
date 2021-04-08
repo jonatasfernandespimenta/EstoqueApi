@@ -20,8 +20,10 @@ export class ItemController {
 
   @Post('/')
   async createItem(@Body() Item: ItemViewModel, @Res() res) {
-    await this.itemService.createItem(Item);
-    return res.sendFile(join(__dirname, '..', '..', 'teste.txt'));
+    const response = await this.itemService.createItem(Item);
+    if(response.created) {
+      return res.sendFile(join(__dirname, '..', '..', 'teste.txt'));
+    }
   }
 
   @Post('delete/:id')
