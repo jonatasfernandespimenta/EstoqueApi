@@ -66,7 +66,7 @@ export class ItemService {
       const createdItem = await this.itemRepository.createItem(newItem);
       
       let itens = []; 
-  
+
       if(foundProduct.items == "") {
         itens.push(createdItem._id)
       } else {
@@ -82,9 +82,13 @@ export class ItemService {
         foundProduct._id
       );
 
-  
-      const zpl = `^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS`
-  
+      const zpl = `
+      ^FO20,0^BY4,2.0,${i == 0 ? 65 : i * 500}^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS
+      ^FB300,2,2
+      ^FB380,2,2
+      ^FO16,${(i+1) * 450}^A0N,18,18^FD${newItem.productName}^FS
+      `
+
       fs.appendFile('teste.txt', '\n^XA\n' + zpl + '\n^XZ', function (err) {
         if (err) throw err;
         created = true

@@ -11,6 +11,8 @@ export class ItemViewModel {
 
   readonly quantity: number;
 
+  readonly productName: String;
+
   readonly createdAt: Date;
 
 }
