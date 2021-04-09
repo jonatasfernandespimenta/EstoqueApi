@@ -1,25 +1,17 @@
 
 ^XA
 
-      ^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/60708687e9ed56909c232537^FS
+      ^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/60709a8546f9c6b96275aeb6^FS
       ^FB300,2,2
       ^FB380,2,2
-      ^FO16,450^A0N,18,18^FDteste^FS
+      ^FO16,450^A0N,18,18^FDteste2^FS
       
 ^XZ
 ^XA
 
-      ^FO20,0^BY4,2.0,500^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/60708687e9ed56909c232538^FS
+      ^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/60709a8546f9c6b96275aeb7^FS
       ^FB300,2,2
       ^FB380,2,2
-      ^FO16,900^A0N,18,18^FDteste^FS
-      
-^XZ
-^XA
-
-      ^FO20,0^BY4,2.0,1000^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/60708687e9ed56909c232539^FS
-      ^FB300,2,2
-      ^FB380,2,2
-      ^FO16,1350^A0N,18,18^FDteste^FS
+      ^FO16,450^A0N,18,18^FDteste2^FS
       
 ^XZ

@@ -16,9 +16,6 @@ const item_repository_1 = require("../repositories/item.repository");
 const log_repository_1 = require("../repositories/log.repository");
 const product_respository_1 = require("../repositories/product.respository");
 const fs = require('fs');
-const insertLine = require('insert-line');
-const countLinesInFile = require('count-lines-in-file');
-const QRCode = require("qrcode");
 let ItemService = class ItemService {
     constructor(itemRepository, productRepository, logRepository) {
         this.itemRepository = itemRepository;

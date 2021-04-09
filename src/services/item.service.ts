@@ -1,15 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ItemViewModel } from 'src/domains/item.viewmodel';
 import { ItemRepository } from 'src/repositories/item.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { ProductRepository } from 'src/repositories/product.respository';
-import { ProductService } from './product.service';
 
 const fs = require('fs');
-const insertLine = require('insert-line')
-const countLinesInFile = require('count-lines-in-file');
-
-const QRCode = require("qrcode");
 
 @Injectable()
 export class ItemService {
@@ -82,7 +77,6 @@ export class ItemService {
         foundProduct._id
       );
 
-      
       const zpl = `
       ^FO20,0^BY4,2.0,65^BQN,2,10^FDMA0http://192.168.15.161:3000/item/delete/${createdItem._id}^FS
       ^FB300,2,2

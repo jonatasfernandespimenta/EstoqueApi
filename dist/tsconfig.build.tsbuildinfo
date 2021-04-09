@@ -2222,7 +2222,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "ce7945b73b60e3addf47b5880b09f48ee4bec271fb891891787cd3ac17197389",
+        "version": "aa2648be9737ae235cb2425c6975ca41188e42c6fa335399e6120fc8a20baa30",
         "signature": "60a0e8b0a605b5e70f2b60920eed1060a4b907dcb38e260c12800ad0742e3b7d",
         "affectsGlobalScope": false
       },
@@ -4551,8 +4551,7 @@
         "../src/domains/item.viewmodel.ts",
         "../src/repositories/item.repository.ts",
         "../src/repositories/log.repository.ts",
-        "../src/repositories/product.respository.ts",
-        "../src/services/product.service.ts"
+        "../src/repositories/product.respository.ts"
       ],
       "../src/services/log.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
