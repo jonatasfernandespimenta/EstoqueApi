@@ -2172,13 +2172,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/log.service.ts": {
-        "version": "6868a6a8ea4a5299bf1db48f50e9d61cb0c58582dc7cbc6806af6354a752ab18",
-        "signature": "4aa2f0b6d6af3ac6a762e3339dfc24882dd4a2bf53c45f7b71d57babb954f046",
+        "version": "00cafb411526bb8c67b492c773c8de374076e1af1cb77709eaeddfd85a98396f",
+        "signature": "b832c78ff5bac29e2460482f9e9e25054da803f027c446329e7b867f44e17069",
         "affectsGlobalScope": false
       },
       "../src/controllers/log.controller.ts": {
         "version": "565054dfeadfe6f4b93ab60fed5dd9e3d0b295fd8e23e807d9f5c158268731ca",
-        "signature": "3fe708da661d5581d6315938476884e09800a5a5c653c6efbd1826a009cc2023",
+        "signature": "1d4fcfa22ce22a2898fee4039522efb4bb289ebbf8231a7e933f5a72231c2092",
         "affectsGlobalScope": false
       },
       "../src/domains/product.viewmodel.ts": {

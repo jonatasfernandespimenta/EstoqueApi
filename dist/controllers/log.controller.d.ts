@@ -6,10 +6,10 @@ export declare class LogController {
         input: {
             date: string;
             qtd: unknown;
-        };
+        }[];
         withdraw: {
             date: string;
             qtd: unknown;
-        };
+        }[];
     }>;
 }

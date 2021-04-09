@@ -26,7 +26,7 @@ let LogService = class LogService {
         const result2 = _.mapValues(dataByDate2, (entries) => _.sumBy(entries, 'quantity'));
         const inputResult = Object.entries(result1).map(([key, qtd]) => { return { 'date': key, 'qtd': qtd }; });
         const withdrawResult = Object.entries(result2).map(([key, qtd]) => { return { 'date': key, 'qtd': qtd }; });
-        const finalResult = { 'input': inputResult[0], 'withdraw': withdrawResult[1] };
+        const finalResult = { 'input': inputResult.map((i) => i), 'withdraw': withdrawResult.map((i) => i) };
         return finalResult;
     }
     async getlog(id) {

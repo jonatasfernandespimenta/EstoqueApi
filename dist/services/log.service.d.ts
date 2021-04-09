@@ -6,11 +6,11 @@ export declare class LogService {
         input: {
             date: string;
             qtd: unknown;
-        };
+        }[];
         withdraw: {
             date: string;
             qtd: unknown;
-        };
+        }[];
     }>;
     getlog(id: any): Promise<import("../domains/schemas/log.schema").Log>;
     updatelog(newProps: any, id: any): Promise<import("../domains/schemas/log.schema").Log>;
