@@ -33,8 +33,8 @@ let ItemController = class ItemController {
             return res.sendFile(path_1.join(__dirname, '..', '..', 'teste.txt'));
         }
     }
-    async updateItem(params, body) {
-        return this.itemService.removeItem(params.id, body);
+    async updateItem(params) {
+        return this.itemService.removeItem(params.id);
     }
 };
 __decorate([
@@ -58,10 +58,10 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "createItem", null);
 __decorate([
-    common_1.Post('delete/:id'),
-    __param(0, common_1.Param()), __param(1, common_1.Body()),
+    common_1.Get('delete/:id'),
+    __param(0, common_1.Param()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "updateItem", null);
 ItemController = __decorate([

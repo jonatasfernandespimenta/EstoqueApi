@@ -6,5 +6,5 @@ export declare class ItemController {
     getItems(): Promise<import("../domains/schemas/item.schema").Item[]>;
     getItem(params: any): Promise<import("../domains/schemas/item.schema").Item>;
     createItem(Item: ItemViewModel, res: any): Promise<any>;
-    updateItem(params: any, body: any): Promise<import("../domains/schemas/item.schema").Item>;
+    updateItem(params: any): Promise<import("../domains/schemas/item.schema").Item>;
 }

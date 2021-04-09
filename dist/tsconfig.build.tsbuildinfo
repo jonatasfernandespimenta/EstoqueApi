@@ -2222,13 +2222,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "71315c9630df9a53e59e319ce46814ae07fd1c5f6dac5798907402049a73d917",
-        "signature": "f0b5a277d1585b37be14dceb877e9b51061a3593c5a354245b73efe61f625920",
+        "version": "68bb99a79fd8e4155f725d886854513d9714e198331f45cd0bbd6c3d21b85500",
+        "signature": "60a0e8b0a605b5e70f2b60920eed1060a4b907dcb38e260c12800ad0742e3b7d",
         "affectsGlobalScope": false
       },
       "../src/controllers/item.controller.ts": {
-        "version": "5267d2007d96f4c2f883207ba021e778e42a819b156f4a39c42c154758874ed2",
-        "signature": "c5ae8fcae13d3fb1d7163818a86dbafd2ae8673a4a7b1eeea22ff4683340ba6c",
+        "version": "d54613ca5d14664eef5636fcb9fbced969df7bea78d818378bd8951b9a553451",
+        "signature": "b382cc057529866b6166c9e71919ded95b91d7ba1859063ab5e42b45a0e49b3c",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {

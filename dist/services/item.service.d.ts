@@ -10,7 +10,7 @@ export declare class ItemService {
     getItems(): Promise<import("../domains/schemas/item.schema").Item[]>;
     getItem(id: any): Promise<import("../domains/schemas/item.schema").Item>;
     updateItem(newProps: any, id: any): Promise<import("../domains/schemas/item.schema").Item>;
-    removeItem(id: any, body: any): Promise<import("../domains/schemas/item.schema").Item>;
+    removeItem(id: any): Promise<import("../domains/schemas/item.schema").Item>;
     createItem(newItem: ItemViewModel): Promise<{
         created: boolean;
     }>;

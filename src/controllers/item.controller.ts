@@ -26,9 +26,9 @@ export class ItemController {
     }
   }
 
-  @Post('delete/:id')
-  async updateItem(@Param() params, @Body() body) {
-    return this.itemService.removeItem(params.id, body);
+  @Get('delete/:id')
+  async updateItem(@Param() params) {
+    return this.itemService.removeItem(params.id);
   }
 
 }
