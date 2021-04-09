@@ -10,6 +10,10 @@ export class ProductService {
     return this.productRepository.getProducts();
   }
 
+  async getByNameOrSku(params) {
+    return this.productRepository.getProductByNameOrSku(params);
+  }
+
   async getProduct(id) {
     return this.productRepository.getById(id);
   }

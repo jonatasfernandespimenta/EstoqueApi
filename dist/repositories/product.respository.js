@@ -38,6 +38,9 @@ let ProductRepository = class ProductRepository {
     async updateProduct(newProps, id) {
         return await this.productCollection.findByIdAndUpdate(id, newProps);
     }
+    async getProductByNameOrSku(param) {
+        return await this.productCollection.find({ $or: [{ name: { $regex: '.*' + param + '.*' }, sku: { $regex: '.*' + param + '.*' } }] });
+    }
 };
 ProductRepository = __decorate([
     common_1.Injectable(),

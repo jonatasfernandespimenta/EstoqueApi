@@ -33,4 +33,8 @@ export class ProductRepository {
     )
   }
 
+  async getProductByNameOrSku(param) {
+    return await this.productCollection.find({ $or: [{name: { $regex: '.*' + param + '.*' }, sku: { $regex: '.*' + param + '.*' }}] })
+  }
+
 }

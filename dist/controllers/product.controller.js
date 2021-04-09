@@ -32,6 +32,9 @@ let ProductController = class ProductController {
     async updateProduct(product, params) {
         return this.productService.inventoryWithdraw(product, params.id);
     }
+    async getByNameOrSku(params) {
+        return this.productService.getByNameOrSku(params.param);
+    }
 };
 __decorate([
     common_1.Get('/'),
@@ -60,6 +63,13 @@ __decorate([
     __metadata("design:paramtypes", [product_viewmodel_1.ProductViewModel, Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "updateProduct", null);
+__decorate([
+    common_1.Get('/name/:param'),
+    __param(0, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ProductController.prototype, "getByNameOrSku", null);
 ProductController = __decorate([
     common_1.Controller('products'),
     __metadata("design:paramtypes", [product_service_1.ProductService])

@@ -7,4 +7,5 @@ export declare class ProductController {
     getProduct(params: any): Promise<import("../domains/schemas/product.schema").Product>;
     createProduct(product: ProductViewModel): Promise<import("../domains/schemas/product.schema").Product>;
     updateProduct(product: ProductViewModel, params: any): Promise<import("../domains/schemas/product.schema").Product>;
+    getByNameOrSku(params: any): Promise<import("../domains/schemas/product.schema").Product[]>;
 }

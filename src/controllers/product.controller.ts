@@ -26,4 +26,9 @@ export class ProductController {
     return this.productService.inventoryWithdraw(product, params.id);
   }
 
+  @Get('/name/:param')
+  async getByNameOrSku(@Param() params) {
+    return this.productService.getByNameOrSku(params.param);
+  }
+
 }
