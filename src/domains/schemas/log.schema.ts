@@ -7,10 +7,12 @@ export interface Log extends Document {
   readonly inputDate: Date;
   readonly withdrawDate: Date;
   readonly quantity: Number;
+  readonly sku: String;
 }
 
 export const LogSchema = new mongoose.Schema({
   inputDate: Date,
   withdrawDate: Date,
-  quantity: Number
+  quantity: Number,
+  sku: String
 })

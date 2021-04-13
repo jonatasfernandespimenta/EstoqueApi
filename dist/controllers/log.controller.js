@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LogController = void 0;
 const common_1 = require("@nestjs/common");
@@ -19,6 +22,9 @@ let LogController = class LogController {
     async getLog() {
         return this.logService.getlogs();
     }
+    async removeLog(params) {
+        return this.logService.deleteLog(params.id);
+    }
 };
 __decorate([
     common_1.Get('/'),
@@ -26,6 +32,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], LogController.prototype, "getLog", null);
+__decorate([
+    common_1.Delete('/:id'),
+    __param(0, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], LogController.prototype, "removeLog", null);
 LogController = __decorate([
     common_1.Controller('/log'),
     __metadata("design:paramtypes", [log_service_1.LogService])

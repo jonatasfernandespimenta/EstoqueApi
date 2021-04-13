@@ -14,15 +14,24 @@ export class LogService {
     const logs = await this.logRepository.getLogs();
 
     const dataByDate1 = _.groupBy(logs, ({ inputDate }) => dayjs(inputDate).format('DD-MM-YYYY'));
-    const result1 = _.mapValues(dataByDate1, (entries) => _.sumBy(entries, 'quantity'));
+    const result1 = _.mapValues(dataByDate1, (entries) => ({
+      sku: _.get(entries, '[0].sku'),
+      quantity: _.sumBy(entries, 'quantity')
+    }));
 
     const dataByDate2 = _.groupBy(logs, ({ withdrawDate }) => dayjs(withdrawDate).format('DD-MM-YYYY'));
-    const result2 = _.mapValues(dataByDate2, (entries) => _.sumBy(entries, 'quantity'));
+    const result2 = _.mapValues(dataByDate2, (entries) => ({
+      sku: _.get(entries, '[0].sku'),
+      quantity: _.sumBy(entries, 'quantity')
+    }));
 
-    const inputResult = Object.entries(result1).map(([key, qtd]) => { return {'date': key, 'qtd': qtd} })
-    const withdrawResult = Object.entries(result2).map(([key, qtd]) => { return {'date': key, 'qtd': qtd} })
+    const inputResult = Object.entries(result1).map(([key, qtd]) => { return {'date': key, 'info': qtd} })
+    const withdrawResult = Object.entries(result2).map(([key, qtd]) => { return {'date': key, 'info': qtd} })
 
-    const finalResult = {'input': inputResult.map((i) => i), 'withdraw': withdrawResult.map((i) => i)}
+    const finalResult = {
+      'input': inputResult.map((i) => i).filter(x => x.date !== 'Invalid Date'), 
+      'withdraw': withdrawResult.map((i) => i).filter(x => x.date !== 'Invalid Date')
+    }
 
     return finalResult;
   }
@@ -39,5 +48,8 @@ export class LogService {
     return this.logRepository.createLog(body);
   }
 
+  async deleteLog(id) {
+    return this.logRepository.deleteLog(id);
+  }
 
 }

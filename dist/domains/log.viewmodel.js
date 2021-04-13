@@ -12,15 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LogViewModel = void 0;
 const class_validator_1 = require("class-validator");
 class LogViewModel {
-    constructor(inputDate, withdrawDate, quantity) {
+    constructor(inputDate, withdrawDate, quantity, sku) {
         this.inputDate = inputDate;
         this.withdrawDate = withdrawDate;
         this.quantity = quantity;
+        this.sku = sku;
     }
 }
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], LogViewModel.prototype, "quantity", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], LogViewModel.prototype, "sku", void 0);
 exports.LogViewModel = LogViewModel;
 //# sourceMappingURL=log.viewmodel.js.map

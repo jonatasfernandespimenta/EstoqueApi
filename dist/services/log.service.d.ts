@@ -5,14 +5,15 @@ export declare class LogService {
     getlogs(): Promise<{
         input: {
             date: string;
-            qtd: unknown;
+            info: unknown;
         }[];
         withdraw: {
             date: string;
-            qtd: unknown;
+            info: unknown;
         }[];
     }>;
     getlog(id: any): Promise<import("../domains/schemas/log.schema").Log>;
     updatelog(newProps: any, id: any): Promise<import("../domains/schemas/log.schema").Log>;
     createLog(body: any): Promise<import("../domains/schemas/log.schema").Log>;
+    deleteLog(id: any): Promise<import("../domains/schemas/log.schema").Log>;
 }

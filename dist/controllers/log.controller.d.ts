@@ -5,11 +5,12 @@ export declare class LogController {
     getLog(): Promise<{
         input: {
             date: string;
-            qtd: unknown;
+            info: unknown;
         }[];
         withdraw: {
             date: string;
-            qtd: unknown;
+            info: unknown;
         }[];
     }>;
+    removeLog(params: any): Promise<import("../domains/schemas/log.schema").Log>;
 }

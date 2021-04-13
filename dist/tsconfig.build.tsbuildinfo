@@ -2157,13 +2157,13 @@
         "affectsGlobalScope": false
       },
       "../src/domains/log.viewmodel.ts": {
-        "version": "61c2e6fa9dfd8af3cead30f9995c6f8a4303d9c8490287c7c8de1e49fdd10621",
-        "signature": "b0d700884b682af2151cb904ddfe20ebfd7b9337318fd3fa1fb55c56c0fd52d7",
+        "version": "8ed335a8bc3594afa8a36161d092cb7dc3800daa20ee2a37d93a4b3e90429c66",
+        "signature": "06dbaf7a8b9df858524ac201bf55bb36b7e8d2f00cfa188dab48930cceead5d9",
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/log.schema.ts": {
-        "version": "d24e825dbb19a8a6dfb7793363c21b8d97fae999c649ca745dd7b13f6fe28e3c",
-        "signature": "7f0606490e01b68c844ab7c9cbb45523a83c4440f2acd4ade76c4353b9709f44",
+        "version": "7b1e878e9a51ce2622fe6a07caa478911798d5c11331273c3983fe425940cbad",
+        "signature": "1ee68be1f8ee4a7402587e423919196d821a4eb7b1a45071e781ab3666c6197b",
         "affectsGlobalScope": false
       },
       "../src/repositories/log.repository.ts": {
@@ -2172,13 +2172,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/log.service.ts": {
-        "version": "00cafb411526bb8c67b492c773c8de374076e1af1cb77709eaeddfd85a98396f",
-        "signature": "b832c78ff5bac29e2460482f9e9e25054da803f027c446329e7b867f44e17069",
+        "version": "cbadce328ee22a1cea5bc3fcf683ef1e1255d8d342e59a65cf82c1a4bdb71c3d",
+        "signature": "da41e6fb0623506042c8e39310399c6895a940b4fefca62353068bfed95a116a",
         "affectsGlobalScope": false
       },
       "../src/controllers/log.controller.ts": {
-        "version": "565054dfeadfe6f4b93ab60fed5dd9e3d0b295fd8e23e807d9f5c158268731ca",
-        "signature": "1d4fcfa22ce22a2898fee4039522efb4bb289ebbf8231a7e933f5a72231c2092",
+        "version": "30b7d413b0521010c2e37b733dad5b156845b742383d78e838ad4f8d3a7a71e7",
+        "signature": "0d6e025434a4075254d9a9736eccc27a2c659a3c4c7414df47854563f4eea828",
         "affectsGlobalScope": false
       },
       "../src/domains/product.viewmodel.ts": {
@@ -2222,7 +2222,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "aa2648be9737ae235cb2425c6975ca41188e42c6fa335399e6120fc8a20baa30",
+        "version": "4f50639430cfddd182b1c557612fd3cc24e506e4ba92fd85ee7812159cb23b2b",
         "signature": "60a0e8b0a605b5e70f2b60920eed1060a4b907dcb38e260c12800ad0742e3b7d",
         "affectsGlobalScope": false
       },
@@ -4495,6 +4495,7 @@
       ],
       "../src/controllers/log.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/node/vm.d.ts",
         "../src/services/log.service.ts"
       ],
       "../src/controllers/product.controller.ts": [
@@ -6392,6 +6393,7 @@
         "../src/services/item.service.ts"
       ],
       "../src/controllers/log.controller.ts": [
+        "../src/domains/schemas/log.schema.ts",
         "../src/services/log.service.ts"
       ],
       "../src/controllers/product.controller.ts": [

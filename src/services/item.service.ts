@@ -27,14 +27,15 @@ export class ItemService {
   }
 
   async removeItem(id) {
-    const res = await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: 1 }).then(async() => {
-      const foundItem = await this.itemRepository.getById(id);
-  
-      const productList = await this.productRepository.getProducts();
-      
-      const foundProduct = productList.find(
-        product => product.sku === foundItem.sku
-      );
+    const foundItem = await this.itemRepository.getById(id);
+    
+    const productList = await this.productRepository.getProducts();
+    
+    const foundProduct = productList.find(
+      product => product.sku === foundItem.sku
+    );
+
+    const res = await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: 1 , sku: foundProduct.sku }).then(async() => {
   
       await this.productRepository.updateProduct(
         { quantity: foundProduct.quantity - 1 }, 
@@ -50,7 +51,7 @@ export class ItemService {
   async createItem(newItem: ItemViewModel) {
     let created = false;
     fs.truncate('teste.txt', 0, function(){console.log('')})
-    await this.logRepository.createLog({ inputDate: newItem.createdAt, withdrawDate: null, quantity: newItem.quantity })
+    await this.logRepository.createLog({ inputDate: newItem.createdAt, withdrawDate: null, quantity: newItem.quantity, sku: newItem.sku })
     const productList = await this.productRepository.getProducts();
 
     for (let i = 0; i <= newItem.quantity; i++) {

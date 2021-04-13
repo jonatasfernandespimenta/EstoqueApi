@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 exports.LogSchema = new mongoose.Schema({
     inputDate: Date,
     withdrawDate: Date,
-    quantity: Number
+    quantity: Number,
+    sku: String
 });
 //# sourceMappingURL=log.schema.js.map

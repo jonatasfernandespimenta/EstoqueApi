@@ -32,10 +32,10 @@ let ItemService = class ItemService {
         return this.itemRepository.updateItem(newProps, id);
     }
     async removeItem(id) {
-        const res = await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: 1 }).then(async () => {
-            const foundItem = await this.itemRepository.getById(id);
-            const productList = await this.productRepository.getProducts();
-            const foundProduct = productList.find(product => product.sku === foundItem.sku);
+        const foundItem = await this.itemRepository.getById(id);
+        const productList = await this.productRepository.getProducts();
+        const foundProduct = productList.find(product => product.sku === foundItem.sku);
+        const res = await this.logRepository.createLog({ inputDate: null, withdrawDate: new Date(), quantity: 1, sku: foundProduct.sku }).then(async () => {
             await this.productRepository.updateProduct({ quantity: foundProduct.quantity - 1 }, foundProduct._id);
             return this.itemRepository.deleteItem(id);
         });
@@ -44,7 +44,7 @@ let ItemService = class ItemService {
     async createItem(newItem) {
         let created = false;
         fs.truncate('teste.txt', 0, function () { console.log(''); });
-        await this.logRepository.createLog({ inputDate: newItem.createdAt, withdrawDate: null, quantity: newItem.quantity });
+        await this.logRepository.createLog({ inputDate: newItem.createdAt, withdrawDate: null, quantity: newItem.quantity, sku: newItem.sku });
         const productList = await this.productRepository.getProducts();
         for (let i = 0; i <= newItem.quantity; i++) {
             const foundProduct = productList.find(product => product.sku === newItem.sku);

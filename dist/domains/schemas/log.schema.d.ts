@@ -5,5 +5,6 @@ export interface Log extends Document {
     readonly inputDate: Date;
     readonly withdrawDate: Date;
     readonly quantity: Number;
+    readonly sku: String;
 }
 export declare const LogSchema: mongoose.Schema<mongoose.Document<any, {}>, mongoose.Model<any, any>, undefined>;
