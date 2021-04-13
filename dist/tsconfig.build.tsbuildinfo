@@ -2222,7 +2222,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/item.service.ts": {
-        "version": "4f50639430cfddd182b1c557612fd3cc24e506e4ba92fd85ee7812159cb23b2b",
+        "version": "1ab4a5fceed21ddc66c4f4ea0069063a85763f5d1e70fed8c866693b2b758087",
         "signature": "60a0e8b0a605b5e70f2b60920eed1060a4b907dcb38e260c12800ad0742e3b7d",
         "affectsGlobalScope": false
       },

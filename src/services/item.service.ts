@@ -72,7 +72,7 @@ export class ItemService {
   
       await this.productRepository.updateProduct(
         {
-          quantity: foundProduct.quantity + 1,
+          quantity: foundProduct.quantity + newItem.quantity,
           items: itens
         }, 
         foundProduct._id

@@ -58,7 +58,7 @@ let ItemService = class ItemService {
                 itens.push(createdItem._id);
             }
             await this.productRepository.updateProduct({
-                quantity: foundProduct.quantity + 1,
+                quantity: foundProduct.quantity + newItem.quantity,
                 items: itens
             }, foundProduct._id);
             const zpl = `
