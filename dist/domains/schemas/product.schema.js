@@ -11,6 +11,7 @@ exports.ProductSchema = new mongoose.Schema({
             ref: 'Item'
         }],
     createdAt: { type: Date, default: Date.now },
-    days: Number
+    days: Number,
+    providerDays: Number
 });
 //# sourceMappingURL=product.schema.js.map

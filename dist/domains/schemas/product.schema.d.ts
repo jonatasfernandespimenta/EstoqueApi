@@ -8,5 +8,6 @@ export interface Product extends Document {
     readonly createdAt: Date;
     readonly items: Object;
     readonly days: number;
+    readonly providerDays: number;
 }
 export declare const ProductSchema: mongoose.Schema<mongoose.Document<any, {}>, mongoose.Model<any, any>, undefined>;

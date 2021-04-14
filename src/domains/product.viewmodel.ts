@@ -1,13 +1,14 @@
 import { IsNotEmpty } from 'class-validator';
 
 export class ProductViewModel {
-  constructor(sku: string, quantity: number, name: string, createdAt: Date, items: Object, days: number) { 
+  constructor(sku: string, quantity: number, name: string, createdAt: Date, items: Object, days: number, providerDays: number) { 
     this.sku = sku;
     this.quantity = quantity;
     this.name = name;
     this.createdAt = createdAt;
     this.items = items;
-    this.days = days
+    this.days = days;
+    this.providerDays = providerDays;
   }
 
   @IsNotEmpty()
@@ -24,5 +25,7 @@ export class ProductViewModel {
   readonly items: Object;
 
   readonly days: number;
+
+  readonly providerDays: number;
 
 }

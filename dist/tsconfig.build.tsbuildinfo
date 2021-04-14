@@ -2182,8 +2182,8 @@
         "affectsGlobalScope": false
       },
       "../src/domains/product.viewmodel.ts": {
-        "version": "964d03da957e62b8c39a60d2bad1fc85be7ed2b2df55f3ccddc1232ce6ebeed3",
-        "signature": "483a9542a70e968b3cfe0aaf4e90aff6cbb23bf8eb39473c164aa2888ceb18da",
+        "version": "5adfbdec2211a707be33e1d3823da618d07fcd33d4755115bed1989c56cda69e",
+        "signature": "b45851e2eeb7e11ad512252115586d4620f31d37fd441c599a8492fe485ad833",
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/item.schema.ts": {
@@ -2192,8 +2192,8 @@
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/product.schema.ts": {
-        "version": "eced6929a9a73c6b58bacaff401d58518fd41be423106a23d97d61cd88600733",
-        "signature": "6d9ab94a29c809663a3389201129531e3f508778eedbfd44de5fb7bc54026d47",
+        "version": "a122e496df1c60efb3f04f8cb7b78deae5dcc88d6b0e472719f9db0995235941",
+        "signature": "b7a3afbcffd211e4065fb823ac7d2f2918fdd7d99e7065551e58bcb12977049c",
         "affectsGlobalScope": false
       },
       "../src/repositories/product.respository.ts": {

@@ -12,13 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductViewModel = void 0;
 const class_validator_1 = require("class-validator");
 class ProductViewModel {
-    constructor(sku, quantity, name, createdAt, items, days) {
+    constructor(sku, quantity, name, createdAt, items, days, providerDays) {
         this.sku = sku;
         this.quantity = quantity;
         this.name = name;
         this.createdAt = createdAt;
         this.items = items;
         this.days = days;
+        this.providerDays = providerDays;
     }
 }
 __decorate([

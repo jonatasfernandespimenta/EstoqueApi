@@ -11,6 +11,7 @@ export interface Product extends Document {
   readonly createdAt: Date,
   readonly items: Object
   readonly days: number;
+  readonly providerDays: number;
 } 
 
 export const ProductSchema = new mongoose.Schema({
@@ -22,5 +23,6 @@ export const ProductSchema = new mongoose.Schema({
     ref: 'Item'
   }],
   createdAt: { type: Date, default: Date.now },
-  days: Number
+  days: Number,
+  providerDays: Number
 })
