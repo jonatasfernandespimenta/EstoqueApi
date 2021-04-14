@@ -30,7 +30,7 @@ let ProductController = class ProductController {
         return this.productService.createProduct(product);
     }
     async updateProduct(product, params) {
-        return this.productService.inventoryWithdraw(product, params.id);
+        return this.productService.updateProduct(product, params.id);
     }
     async getByNameOrSku(params) {
         return this.productService.getByNameOrSku(params.param);

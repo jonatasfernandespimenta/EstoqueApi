@@ -10,6 +10,7 @@ exports.ProductSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Item'
         }],
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+    days: Number
 });
 //# sourceMappingURL=product.schema.js.map

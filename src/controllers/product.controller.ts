@@ -23,7 +23,7 @@ export class ProductController {
 
   @Put('/:id')
   async updateProduct(@Body() product: ProductViewModel, @Param() params) {
-    return this.productService.inventoryWithdraw(product, params.id);
+    return this.productService.updateProduct(product, params.id);
   }
 
   @Get('/name/:param')
