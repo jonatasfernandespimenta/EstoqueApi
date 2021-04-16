@@ -18,6 +18,10 @@ export class ProductService {
     return this.productRepository.getById(id);
   }
 
+  async delProduct(id) {
+    return this.productRepository.deleteProduct(id);
+  }
+
   async updateProduct(newProps, id) {
     return this.productRepository.updateProduct(newProps, id);
   }
@@ -41,8 +45,9 @@ export class ProductService {
   }
 
   async createProduct(newProduct: ProductViewModel) {
-    const productList = await this.productRepository.getProducts();
 
+    const productList = await this.productRepository.getProducts();
+    
     const foundProduct = productList.find(
       product => product.sku === newProduct.sku
     );

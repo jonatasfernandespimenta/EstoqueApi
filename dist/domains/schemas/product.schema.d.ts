@@ -9,5 +9,9 @@ export interface Product extends Document {
     readonly items: Object;
     readonly days: number;
     readonly providerDays: number;
+    readonly resp: string;
+    readonly und: string;
+    readonly sector: string;
+    readonly provider: string;
 }
 export declare const ProductSchema: mongoose.Schema<mongoose.Document<any, {}>, mongoose.Model<any, any>, undefined>;

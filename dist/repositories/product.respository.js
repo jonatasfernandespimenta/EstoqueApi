@@ -27,6 +27,9 @@ let ProductRepository = class ProductRepository {
             .findOne({ _id: id })
             .populate('items');
     }
+    async deleteProduct(id) {
+        return await this.productCollection.findByIdAndDelete(id);
+    }
     async getProducts() {
         return await this.productCollection
             .find()

@@ -12,6 +12,10 @@ exports.ProductSchema = new mongoose.Schema({
         }],
     createdAt: { type: Date, default: Date.now },
     days: Number,
-    providerDays: Number
+    providerDays: Number,
+    resp: String,
+    und: String,
+    sector: String,
+    provider: String,
 });
 //# sourceMappingURL=product.schema.js.map

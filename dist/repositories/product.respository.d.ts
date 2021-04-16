@@ -5,6 +5,7 @@ export declare class ProductRepository {
     private readonly productCollection;
     constructor(productCollection: Model<Product>);
     getById(id: any): Promise<Product>;
+    deleteProduct(id: any): Promise<Product>;
     getProducts(): Promise<Product[]>;
     createProduct(newProduct: ProductViewModel): Promise<Product>;
     updateProduct(newProps: any, id: any): Promise<Product>;

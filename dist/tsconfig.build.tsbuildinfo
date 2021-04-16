@@ -2182,33 +2182,33 @@
         "affectsGlobalScope": false
       },
       "../src/domains/product.viewmodel.ts": {
-        "version": "5adfbdec2211a707be33e1d3823da618d07fcd33d4755115bed1989c56cda69e",
-        "signature": "b45851e2eeb7e11ad512252115586d4620f31d37fd441c599a8492fe485ad833",
+        "version": "774480a3e1d2afad955914f02288aa5c375a3845e64eebd4761e3daada4c6b07",
+        "signature": "f4c5f0df2fdcf9bc70b80a7c0bfa30a8dba0945ee5f73c12a8173b224cc08fc7",
+        "affectsGlobalScope": false
+      },
+      "../src/domains/schemas/product.schema.ts": {
+        "version": "17bd1e00df7caa70f42522702fd6a3058a864a95ac894356d7fe7baf705e7936",
+        "signature": "7108a404d92fb41b81cff74578cbeee0f89b170ce96e7c6dca4bc0dbccd805fc",
+        "affectsGlobalScope": false
+      },
+      "../src/repositories/product.respository.ts": {
+        "version": "9704b53cc7ff88e33ebb1d730c6d1a4fc5ee03c9c33c6538440685c3d12018df",
+        "signature": "181799a48d74c884f59f8cd7271d8352e4b5d514b527416438e89572a09d7fa8",
+        "affectsGlobalScope": false
+      },
+      "../src/services/product.service.ts": {
+        "version": "967c464e1f686799701fd8ad592173c986675d12b5ae364c1863de50020c8889",
+        "signature": "974191942d5427521bb7d763ddaaa51baf81843b2c33f824be1cec0ba0d75cb4",
+        "affectsGlobalScope": false
+      },
+      "../src/controllers/product.controller.ts": {
+        "version": "e35794626a94cbbecebf81fbe5b03d992b37bb20f60e76c9a29c0bc843a15cf7",
+        "signature": "bd5982c2b10a38167031ceb9be3e5eb6fda92a04a70172bf9a1e1e2ccde2f56b",
         "affectsGlobalScope": false
       },
       "../src/domains/schemas/item.schema.ts": {
         "version": "a349bb5e6280cd05558b68df424d55aa6e0c5dc0a6734dad1515335113af1a65",
         "signature": "213ead80f5824f200f408ed7661b93dfa7ea75b8bfbd692611c0d391cd5ae207",
-        "affectsGlobalScope": false
-      },
-      "../src/domains/schemas/product.schema.ts": {
-        "version": "a122e496df1c60efb3f04f8cb7b78deae5dcc88d6b0e472719f9db0995235941",
-        "signature": "b7a3afbcffd211e4065fb823ac7d2f2918fdd7d99e7065551e58bcb12977049c",
-        "affectsGlobalScope": false
-      },
-      "../src/repositories/product.respository.ts": {
-        "version": "f7992ea3b714e01d89233ed891957477a975148e9313c8370c9fd2a1c9251444",
-        "signature": "83ca04a1a75623bf918190b00c3e1cc2c5ea6e850c496965da34ea95bf4eb405",
-        "affectsGlobalScope": false
-      },
-      "../src/services/product.service.ts": {
-        "version": "7a2a79899100a77eeb0c5b20096956aff4096e86b1965de99e80412cc864de34",
-        "signature": "32a4dcf112e20a9f6e339d8b4ccacdd7c0dbfc370a19ac7d7acd046f0c3c682a",
-        "affectsGlobalScope": false
-      },
-      "../src/controllers/product.controller.ts": {
-        "version": "12f4981e2cc94eaec3825a24d69cc08feeefd67cf97f7da67b1e7e4e50879ea1",
-        "signature": "bee9a37b636fd1131959748294a600388bb6f6313ae3420d97b2e025c16e69d6",
         "affectsGlobalScope": false
       },
       "../src/domains/item.viewmodel.ts": {
@@ -4519,8 +4519,7 @@
         "../node_modules/mongoose/index.d.ts"
       ],
       "../src/domains/schemas/product.schema.ts": [
-        "../node_modules/mongoose/index.d.ts",
-        "../src/domains/schemas/item.schema.ts"
+        "../node_modules/mongoose/index.d.ts"
       ],
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",

@@ -16,6 +16,10 @@ export class ProductRepository {
       .populate('items');
   }
 
+  async deleteProduct(id) {
+    return await this.productCollection.findByIdAndDelete(id);
+  }
+
   async getProducts(): Promise<Product[]> {
     return await this.productCollection
       .find()

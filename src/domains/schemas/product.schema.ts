@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 
 import { Document } from 'mongoose';
-import { ItemSchema } from './item.schema';
 
 export interface Product extends Document {
   readonly _id: mongoose.Schema.Types.ObjectId;
@@ -12,6 +11,10 @@ export interface Product extends Document {
   readonly items: Object
   readonly days: number;
   readonly providerDays: number;
+  readonly resp: string;
+  readonly und: string;
+  readonly sector: string;
+  readonly provider: string;
 } 
 
 export const ProductSchema = new mongoose.Schema({
@@ -24,5 +27,10 @@ export const ProductSchema = new mongoose.Schema({
   }],
   createdAt: { type: Date, default: Date.now },
   days: Number,
-  providerDays: Number
+  providerDays: Number,
+  resp: String,
+  und: String,
+  sector: String,
+  provider: String,
+
 })

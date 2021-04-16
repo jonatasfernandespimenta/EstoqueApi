@@ -26,6 +26,9 @@ let ProductController = class ProductController {
     async getProduct(params) {
         return this.productService.getProduct(params.id);
     }
+    async delProduct(params) {
+        return this.productService.delProduct(params.id);
+    }
     async createProduct(product) {
         return this.productService.createProduct(product);
     }
@@ -49,6 +52,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "getProduct", null);
+__decorate([
+    common_1.Delete('/:id'),
+    __param(0, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ProductController.prototype, "delProduct", null);
 __decorate([
     common_1.Post('/'),
     __param(0, common_1.Body()),

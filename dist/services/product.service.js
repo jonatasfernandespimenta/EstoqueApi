@@ -26,6 +26,9 @@ let ProductService = class ProductService {
     async getProduct(id) {
         return this.productRepository.getById(id);
     }
+    async delProduct(id) {
+        return this.productRepository.deleteProduct(id);
+    }
     async updateProduct(newProps, id) {
         return this.productRepository.updateProduct(newProps, id);
     }
