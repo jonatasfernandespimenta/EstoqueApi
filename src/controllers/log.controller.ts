@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { LogService } from 'src/services/log.service';
 import { runInThisContext } from 'vm';
 
@@ -14,6 +14,11 @@ export class LogController {
   @Delete('/:id')
   async removeLog(@Param() params) {
     return this.logService.deleteLog(params.id);
+  }
+
+  @Post('/')
+  async createLog(@Body() body) {
+    return this.logService.createLog(body)
   }
 
 }

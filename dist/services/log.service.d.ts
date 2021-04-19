@@ -3,14 +3,7 @@ export declare class LogService {
     readonly logRepository: LogRepository;
     constructor(logRepository: LogRepository);
     getlogs(): Promise<{
-        input: {
-            date: string;
-            info: unknown;
-        }[];
-        withdraw: {
-            date: string;
-            info: unknown;
-        }[];
+        product: any[];
     }>;
     getlog(id: any): Promise<import("../domains/schemas/log.schema").Log>;
     updatelog(newProps: any, id: any): Promise<import("../domains/schemas/log.schema").Log>;

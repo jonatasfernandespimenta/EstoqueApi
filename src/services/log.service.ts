@@ -13,27 +13,33 @@ export class LogService {
   async getlogs() {
     const logs = await this.logRepository.getLogs();
 
-    const dataByDate1 = _.groupBy(logs, ({ inputDate }) => dayjs(inputDate).format('DD-MM-YYYY'));
-    const result1 = _.mapValues(dataByDate1, (entries) => ({
-      sku: _.get(entries, '[0].sku'),
-      quantity: _.sumBy(entries, 'quantity')
-    }));
+    const product = [];
 
-    const dataByDate2 = _.groupBy(logs, ({ withdrawDate }) => dayjs(withdrawDate).format('DD-MM-YYYY'));
-    const result2 = _.mapValues(dataByDate2, (entries) => ({
-      sku: _.get(entries, '[0].sku'),
-      quantity: _.sumBy(entries, 'quantity')
-    }));
+    for (const datum of logs) {
+      let existing = product.find(p => p.name === datum.sku);
+      let found = product.some(p => p.name === datum.sku)
 
-    const inputResult = Object.entries(result1).map(([key, qtd]) => { return {'date': key, 'info': qtd} })
-    const withdrawResult = Object.entries(result2).map(([key, qtd]) => { return {'date': key, 'info': qtd} })
+      if (!existing) {
+        existing = {
+          name: datum.sku,
+          exits: [],
+        }
+      }
 
-    const finalResult = {
-      'input': inputResult.map((i) => i).filter(x => x.date !== 'Invalid Date'), 
-      'withdraw': withdrawResult.map((i) => i).filter(x => x.date !== 'Invalid Date')
+      if(!found) {
+        existing.exits.push({
+          withdrawDate: dayjs(datum.withdrawDate).format('DD-MM-YYYY'),
+          inputDate: dayjs(datum.inputDate).format('DD-MM-YYYY') === 'Invalid Date' ? null : dayjs(datum.inputDate).format('DD-MM-YYYY'),
+          quantity: datum.quantity
+        })
+        product.push(existing);
+
+      }
+
     }
+    const returnData = { product };
 
-    return finalResult;
+    return returnData;
   }
 
   async getlog(id) {

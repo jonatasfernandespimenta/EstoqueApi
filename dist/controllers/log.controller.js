@@ -25,6 +25,9 @@ let LogController = class LogController {
     async removeLog(params) {
         return this.logService.deleteLog(params.id);
     }
+    async createLog(body) {
+        return this.logService.createLog(body);
+    }
 };
 __decorate([
     common_1.Get('/'),
@@ -39,6 +42,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], LogController.prototype, "removeLog", null);
+__decorate([
+    common_1.Post('/'),
+    __param(0, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], LogController.prototype, "createLog", null);
 LogController = __decorate([
     common_1.Controller('/log'),
     __metadata("design:paramtypes", [log_service_1.LogService])
