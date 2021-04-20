@@ -30,12 +30,12 @@ let LogService = class LogService {
                     exits: [],
                 };
             }
+            existing.exits.push({
+                withdrawDate: dayjs(datum.withdrawDate).format('DD-MM-YYYY'),
+                inputDate: dayjs(datum.inputDate).format('DD-MM-YYYY') === 'Invalid Date' ? null : dayjs(datum.inputDate).format('DD-MM-YYYY'),
+                quantity: datum.quantity
+            });
             if (!found) {
-                existing.exits.push({
-                    withdrawDate: dayjs(datum.withdrawDate).format('DD-MM-YYYY'),
-                    inputDate: dayjs(datum.inputDate).format('DD-MM-YYYY') === 'Invalid Date' ? null : dayjs(datum.inputDate).format('DD-MM-YYYY'),
-                    quantity: datum.quantity
-                });
                 product.push(existing);
             }
         }
